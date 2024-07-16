@@ -6,11 +6,15 @@ import optuna
 import numpy as np
 from scipy.stats import qmc
 
-from optuna.distributions import BaseDistribution
 from optuna.logging import get_logger
 from optuna.samplers import BaseSampler
 from optuna.study import Study
 from optuna.trial import FrozenTrial, TrialState
+
+from optuna.distributions import BaseDistribution
+from optuna.distributions import FloatDistribution
+from optuna.distributions import IntDistribution
+import optunahub
 
 
 GridValueType = Union[str, float, int, bool, None]
@@ -183,7 +187,7 @@ class UniformDesignSampler(BaseSampler):
     
     
     # testcode
-    if __name__ == "__main__":
+if __name__ == "__main__":
 
     def objective(trial: optuna.Trial) -> float:
         x = trial.suggest_float("x", 0, 1)
